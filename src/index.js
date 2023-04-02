@@ -31,7 +31,7 @@ import Login from "views/Login.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-axios.defaults.baseURL = "http://localhost:8080";
+axios.defaults.baseURL = "https://sbstock.co.kr";
 
 const login = localStorage.getItem("admin");
 
