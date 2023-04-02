@@ -58,7 +58,7 @@ function TableList() {
                       <th className="border-0">접속경로</th>
                       <th className="border-0">접속 시간</th>
                       <th className="border-0">접속 ip</th>
-                      <th className="border-0">접속 OS</th>
+                      {/* <th className="border-0">접속 OS</th> */}
                     </tr>
                   </thead>
                   <tbody>
@@ -69,7 +69,7 @@ function TableList() {
                         <td>{visit.referer}</td>
                         <td>{visit.sessionlastaccess}</td>
                         <td>{visit.ipaddress}</td>
-                        <td>{visit.ostype}</td>
+                        {/* <td>{visit.ostype}</td> */}
                       </tr>
                     ))}
                   </tbody>
