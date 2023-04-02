@@ -23,7 +23,6 @@ function TableList() {
   // const [visitDatas, setVisitDatas] = useState([]);
   const [clients, setClients] = useState([]);
   const handlePageClick = (event) => {
-    console.log(event.selected);
     setPage(event.selected);
   };
   const getVisit = () => {
@@ -46,7 +45,7 @@ function TableList() {
           <Col md="12">
             <Card className="card-plain table-plain-bg">
               <Card.Header>
-                <Card.Title as="h4">Table on Plain Background</Card.Title>
+                <Card.Title as="h4">고객리스트</Card.Title>
                 {/* <p className="card-category">
                   Here is a subtitle for this table
                 </p> */}

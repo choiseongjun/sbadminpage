@@ -44,10 +44,10 @@ function TableList() {
           <Col md="12">
             <Card className="card-plain table-plain-bg">
               <Card.Header>
-                <Card.Title as="h4">Table on Plain Background</Card.Title>
-                <p className="card-category">
+                <Card.Title as="h4">기록리스트</Card.Title>
+                {/* <p className="card-category">
                   Here is a subtitle for this table
-                </p>
+                </p> */}
               </Card.Header>
               <Card.Body className="table-full-width table-responsive px-0">
                 <Table className="table-hover">
