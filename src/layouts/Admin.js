@@ -25,6 +25,7 @@ import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
 
 import routes from "routes.js";
 import { useHistory } from "react-router";
+import BoardWrite from "views/BoardWrite";
 
 import sidebarImage from "assets/img/sidebar-3.jpg";
 
@@ -37,19 +38,19 @@ function Admin() {
   const history = useHistory();
 
   const getRoutes = (routes) => {
-    return routes.map((prop, key) => {
-      if (prop.layout === "/admin") {
-        return (
-          <Route
-            path={prop.layout + prop.path}
-            render={(props) => <prop.component {...props} />}
-            key={key}
-          />
-        );
-      } else {
-        return null;
-      }
-    });
+    return (
+      routes
+        // .filter((item) => item.layout !== "/admin/detail")
+        .map((prop, key) => {
+          return (
+            <Route
+              path={prop.layout + prop.path}
+              render={(props) => <prop.component {...props} />}
+              key={key}
+            />
+          );
+        })
+    );
   };
   React.useEffect(() => {
     document.documentElement.scrollTop = 0;
