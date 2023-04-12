@@ -15,8 +15,8 @@ import BoardWrite from "views/BoardWrite";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-// axios.defaults.baseURL = "https://sbstock.co.kr";
-axios.defaults.baseURL = "http://localhost:8080";
+axios.defaults.baseURL = "https://sbstock.co.kr";
+// axios.defaults.baseURL = "http://localhost:8080";
 const login = localStorage.getItem("admin");
 
 root.render(
