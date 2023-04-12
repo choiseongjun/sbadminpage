@@ -6,12 +6,14 @@ import "react-quill/dist/quill.snow.css";
 import axios from "axios";
 import { Routes, Route, useParams } from "react-router-dom";
 import { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 const BoardDetail = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [gubun, setGubun] = useState("");
   const { detail } = useParams();
+  let history = useHistory();
 
   const getDetailBoard = () => {
     const id = detail;
@@ -19,16 +21,38 @@ const BoardDetail = () => {
       console.log("res=", res);
       setTitle(res.data.title);
       setContent(res.data.content);
+      setGubun(res.data.gubun);
     });
   };
   useEffect(() => {
     getDetailBoard();
   }, []);
+  const boardUpdateM = () => {
+    const param = {
+      title: title,
+      content: content,
+      gubun: gubun,
+      id: detail,
+    };
+    console.log("param=", param);
+    axios
+      .put("/v1/board", param, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        console.log("res=", res);
+        alert("수정완료하였습니다.");
+        history.push("/admin/boards");
+      });
+  };
   return (
     <div>
-      <button onClick={() => boardWriteM()}>글 수정</button>
+      <button onClick={() => boardUpdateM()}>글 수정</button>
       <div style={{ marginTop: 20 }}>
         <Form.Select
+          value={gubun}
           onChange={(e) => setGubun(e.target.value)}
           aria-label="Default select example"
         >

@@ -4,12 +4,13 @@ import Form from "react-bootstrap/Form";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const BoardWrite = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [gubun, setGubun] = useState("");
-
+  let history = useHistory();
   const boardWriteM = () => {
     const param = {
       title: title,
@@ -22,6 +23,7 @@ const BoardWrite = () => {
     }
     axios.post("/v1/board/", param).then((res) => {
       alert("글 작성 되었습니다");
+      history.push("/admin/boards");
     });
   };
   return (
