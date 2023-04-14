@@ -29,6 +29,17 @@ const Boards = () => {
     getBoardData();
   }, []);
 
+  const boardType = (type) => {
+    switch (type) {
+      case "1":
+        return "공지사항";
+      case "2":
+        return "질문과 답변";
+      case "3":
+        return "고객후기";
+    }
+  };
+
   return (
     <div>
       <Link to="/admin/detail/boards/write">
@@ -49,7 +60,7 @@ const Boards = () => {
               boardList.map((board, idx) => (
                 <tr key={idx}>
                   <td>{board.id}</td>
-                  <td>{board.gubun == "1" ? "공지사항" : "질문과 답변"}</td>
+                  <td>{boardType(board.gubun)}</td>
                   <td>
                     <Link to={`/admin/detail/boards/${board.id}`}>
                       {board.title}

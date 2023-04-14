@@ -72,7 +72,11 @@ const BoardDetail = () => {
       </InputGroup>
       <div>
         <ReactQuill
-          style={{ height: 500 }}
+          style={{
+            height: 500,
+            backgroundColor: "#fff",
+            paddingBottom: 45,
+          }}
           theme="snow"
           value={content}
           onChange={setContent}

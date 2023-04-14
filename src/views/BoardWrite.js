@@ -21,7 +21,7 @@ const BoardWrite = () => {
     if (gubun === "") {
       return alert("게시판 유형을 선택해주세요.");
     }
-    axios.post("/v1/board/", param).then((res) => {
+    axios.post("/v1/board", param).then((res) => {
       alert("글 작성 되었습니다");
       history.push("/admin/boards");
     });
@@ -37,6 +37,7 @@ const BoardWrite = () => {
           <option value="">게시판 유형</option>
           <option value="1">공지사항</option>
           <option value="2">질문과답변</option>
+          <option value="3">고객후기</option>
         </Form.Select>
       </div>
       <InputGroup className="mb-3">
@@ -49,12 +50,20 @@ const BoardWrite = () => {
         />
       </InputGroup>
       <div>
-        <ReactQuill
-          style={{ height: 500 }}
-          theme="snow"
-          value={content}
-          onChange={setContent}
-        />
+        {gubun == "3" ? (
+          <></>
+        ) : (
+          <ReactQuill
+            style={{
+              height: 500,
+              backgroundColor: "#fff",
+              paddingBottom: 45,
+            }}
+            theme="snow"
+            value={content}
+            onChange={setContent}
+          />
+        )}
       </div>
     </div>
   );
