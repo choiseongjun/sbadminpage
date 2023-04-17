@@ -12,6 +12,8 @@ import {
   Col,
 } from "react-bootstrap";
 import axios from "axios";
+import ReactPaginate from "react-paginate";
+
 const Boards = () => {
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);
@@ -25,10 +27,10 @@ const Boards = () => {
       setTotalPage(res.data.totalPages);
     });
   };
+
   useEffect(() => {
     getBoardData();
-  }, []);
-
+  }, [page, limit]);
   const boardType = (type) => {
     switch (type) {
       case "1":
@@ -39,7 +41,9 @@ const Boards = () => {
         return "고객후기";
     }
   };
-
+  const handlePageClick = (event) => {
+    setPage(event.selected);
+  };
   return (
     <div>
       <Link to="/admin/detail/boards/write">
@@ -71,6 +75,23 @@ const Boards = () => {
               ))}
           </tbody>
         </Table>
+        <ReactPaginate
+          breakLabel="..."
+          nextLabel="next >"
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={10}
+          pageCount={totalPage}
+          previousLabel="< previous"
+          renderOnZeroPageCount={null}
+          containerClassName="pagination justify-content-center"
+          pageClassName="page-item"
+          pageLinkClassName="page-link"
+          previousClassName="page-item"
+          previousLinkClassName="page-link"
+          nextClassName="page-item"
+          nextLinkClassName="page-link"
+          activeClassName="active"
+        />
       </Card.Body>
     </div>
   );
